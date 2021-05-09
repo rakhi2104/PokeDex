@@ -1,0 +1,21 @@
+name: Push to Branch
+
+"on":
+  push:
+    branches:
+      - "feat/*"
+      - "!main"
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Pull code"
+        uses: "actions/checkout@v2"
+
+      - name: "Ping event to Slack"
+        uses: ./.github/actions/ping-slack
+        id: "ping"
+        with:
+          action_type: "push"
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}

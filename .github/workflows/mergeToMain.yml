@@ -1,0 +1,33 @@
+name: Merge to `main` Branch
+
+"on":
+  push:
+    branches:
+      - "main"
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Pull code"
+        uses: "actions/checkout@v2"
+
+      - name: "Ping event to Slack"
+        uses: ./.github/actions/ping-slack
+        id: "ping"
+        with:
+          action_type: "merge"
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Pull code"
+        uses: "actions/checkout@v2"
+
+      - name: "Deploy to Firebase"
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: "${{ secrets.GITHUB_TOKEN }}"
+          firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_THEME_BOARD_70933 }}"
+          channelId: live
+          projectId: theme-board-70933
