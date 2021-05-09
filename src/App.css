@@ -1,0 +1,45 @@
+.ant-layout {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.container {
+  max-width: 960px;
+  height: 100vh;
+  padding: 48px 0;
+  text-align: center;
+  margin: 0 auto;
+}
+.appHeader {
+  text-align: center;
+}
+.appTitle {
+  color: white;
+  font-size: 32px;
+}
+.ant-layout-content {
+  height: calc(100vh - 252px);
+  overflow-y: scroll;
+}
+.ant-card-meta-title,
+.ant-modal-title,
+.ant-descriptions-title {
+  text-transform: capitalize;
+}
+
+.ant-card {
+  margin-bottom: 12px;
+  border-radius: 8px;
+}
+
+.ant-modal-header {
+  border-radius: 8px 8px 0 0;
+}
+
+.ant-modal-content {
+  border-radius: 8px;
+}
+
+.ant-card-hoverable:hover {
+  border: 1px solid #00152966;
+}
