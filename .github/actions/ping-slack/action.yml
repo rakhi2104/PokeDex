@@ -1,0 +1,8 @@
+name: "Ping Slack"
+description: "A GitHub action to ping the event status to Slack"
+runs:
+  using: node12
+  main: dist/index.js
+branding:
+  color: blue
+  icon: hash
