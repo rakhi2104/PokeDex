@@ -6,11 +6,6 @@ const { default: axios } = require("axios");
 const sample_payload = require("./utils/samplePayload.json");
 
 try {
-  //   const webhookUrl = core.getInput("slack-webhook-url");
-  const event = core.getInput("type");
-  const time = new Date().toTimeString();
-  core.setOutput("time", time);
-
   var payload = JSON.stringify(github.context.payload, undefined, 2);
   if (payload === {}) {
     payload = sample_payload;
@@ -30,7 +25,6 @@ try {
     senderUrl,
   });
   core.info("Sending Message ...");
-  console.log("eNv", process.env.SLACK_WEBHOOK_URL);
 
   // Post Message
   axios
