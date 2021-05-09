@@ -1,9 +1,9 @@
 name: Push to Branch
 
 on:
-  push:
-    branches:
-      except: [main]
+  - push:
+      branches:
+        except: [main]
 jobs:
   ping:
     runs-on: ubuntu-latest
