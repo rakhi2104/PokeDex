@@ -32,6 +32,7 @@ function App() {
       setAppState({ ...appState, loading: false });
     }
     init();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filters]);
 
   return (
