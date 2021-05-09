@@ -4,7 +4,7 @@ runs:
   using: node12
   main: dist/index.js
 inputs:
-  type:
+  action_type:
     description: "Type of event - push or merge"
     default: "push"
     required: false

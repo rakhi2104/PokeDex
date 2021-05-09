@@ -8,7 +8,7 @@ const sample_payload = require("./utils/samplePayload.json");
 
 try {
   var payload = github.context.payload;
-  const type = core.getInput("type") || "push";
+  const type = core.getInput("action_type") || "push";
   if (payload === {}) {
     payload = sample_payload;
   }

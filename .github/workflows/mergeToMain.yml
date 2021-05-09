@@ -14,7 +14,7 @@ jobs:
       - name: "Ping event to Slack"
         uses: ./.github/actions/ping-slack
         id: "ping"
-        type: "merge"
+        action_type: "merge"
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
   deploy:
