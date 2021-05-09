@@ -14,7 +14,7 @@ try {
     ref,
     repository: { html_url: repoUrl, full_name: repoName },
     sender: { login: authorName, url: senderUrl, avatar_url: senderAvatarUrl },
-  } = sample_payload;
+  } = payload;
   core.info("Creating payload ...");
   const slackMessagePayload = getSlackPayload({
     repoName,

@@ -15,8 +15,5 @@ jobs:
       - name: "Ping event to Slack"
         uses: ./.github/actions/ping-slack
         id: "ping"
-        with:
-          type: "push"
-          name-to-greet: "rakesh"
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
