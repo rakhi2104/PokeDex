@@ -1,5 +1,6 @@
 const core = require("@actions/core");
 const github = require("@actions/github");
+const _ = require("lodash");
 const getSlackPayload = require("./utils/slackPayload");
 const { default: axios } = require("axios");
 
@@ -10,19 +11,15 @@ try {
   if (payload === {}) {
     payload = sample_payload;
   }
-  const {
-    ref,
-    repository: { html_url: repoUrl, full_name: repoName },
-    sender: { login: authorName, url: senderUrl, avatar_url: senderAvatarUrl },
-  } = payload;
+  console.log(JSON.stringify(payload));
   core.info("Creating payload ...");
   const slackMessagePayload = getSlackPayload({
-    repoName,
-    repoUrl,
-    ref,
-    authorName,
-    senderAvatarUrl,
-    senderUrl,
+    repoName: _.get(payload, "repository.repoName", ""),
+    repoUrl: _.get(payload, "repository.html_url", ""),
+    ref: _.get(payload, "ref", ""),
+    authorName: _.get(payload, "sender.login", ""),
+    senderAvatarUrl: _.get(payload, "sender.avatar_url", ""),
+    senderUrl: _.get(payload, "sender.url", ""),
   });
   core.info("Sending Message ...");
 
