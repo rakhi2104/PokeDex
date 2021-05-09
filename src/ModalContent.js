@@ -21,6 +21,7 @@ const ModalContent = ({ idx }) => {
       }
     }
     init();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [idx]);
 
   return (

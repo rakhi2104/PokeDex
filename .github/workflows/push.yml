@@ -4,6 +4,7 @@ name: Push to Branch
   push:
     branches:
       - "feat/*"
+      - "fix/*"
       - "!main"
 jobs:
   ping:

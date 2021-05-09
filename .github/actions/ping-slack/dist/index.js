@@ -25756,14 +25756,19 @@ const getSlackPayload = (params) => {
     repoName,
     senderUrl,
     senderAvatarUrl,
+    type,
   } = params;
+  const msg =
+    type === "push"
+      ? `You have a new push to:\n*<${repoUrl}|${repoName}>*`
+      : `New PR has been merged to *main* branch on:\n*<${repoUrl}|${repoName}>*`;
   return {
     blocks: [
       {
         type: "section",
         text: {
           type: "mrkdwn",
-          text: `You have a new push to:\n*<${repoUrl}|${repoName}>*`,
+          text: msg,
         },
       },
       {
@@ -27133,6 +27138,7 @@ const sample_payload = __nccwpck_require__(5509);
 
 try {
   var payload = github.context.payload;
+  const type = core.getInput("action_type") || "push";
   if (payload === {}) {
     payload = sample_payload;
   }
@@ -27143,7 +27149,8 @@ try {
     ref: _.get(payload, "ref", ""),
     authorName: _.get(payload, "sender.login", ""),
     senderAvatarUrl: _.get(payload, "sender.avatar_url", ""),
-    senderUrl: _.get(payload, "sender.url", ""),
+    senderUrl: _.get(payload, "sender.html_url", ""),
+    type,
   });
   core.info("Sending Message ...");
 
