@@ -8,6 +8,7 @@ const sample_payload = require("./utils/samplePayload.json");
 
 try {
   var payload = github.context.payload;
+  const type = core.getInput("type") || "push";
   if (payload === {}) {
     payload = sample_payload;
   }
@@ -18,7 +19,8 @@ try {
     ref: _.get(payload, "ref", ""),
     authorName: _.get(payload, "sender.login", ""),
     senderAvatarUrl: _.get(payload, "sender.avatar_url", ""),
-    senderUrl: _.get(payload, "sender.url", ""),
+    senderUrl: _.get(payload, "sender.html_url", ""),
+    type,
   });
   core.info("Sending Message ...");
 

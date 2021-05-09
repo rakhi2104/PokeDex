@@ -6,14 +6,19 @@ const getSlackPayload = (params) => {
     repoName,
     senderUrl,
     senderAvatarUrl,
+    type,
   } = params;
+  const msg =
+    type === "push"
+      ? `You have a new push to:\n*<${repoUrl}|${repoName}>*`
+      : `New PR has been merged to *main* branch on:\n*<${repoUrl}|${repoName}>*`;
   return {
     blocks: [
       {
         type: "section",
         text: {
           type: "mrkdwn",
-          text: `You have a new push to:\n*<${repoUrl}|${repoName}>*`,
+          text: msg,
         },
       },
       {
