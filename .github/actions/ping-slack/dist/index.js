@@ -27132,11 +27132,10 @@ const { default: axios } = __nccwpck_require__(8211);
 const sample_payload = __nccwpck_require__(5509);
 
 try {
-  var payload = JSON.stringify(github.context.payload, undefined, 2);
+  var payload = github.context.payload;
   if (payload === {}) {
     payload = sample_payload;
   }
-  console.log(JSON.stringify(payload));
   core.info("Creating payload ...");
   const slackMessagePayload = getSlackPayload({
     repoName: _.get(payload, "repository.repoName", ""),

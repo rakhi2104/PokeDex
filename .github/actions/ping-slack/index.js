@@ -7,11 +7,10 @@ const { default: axios } = require("axios");
 const sample_payload = require("./utils/samplePayload.json");
 
 try {
-  var payload = JSON.stringify(github.context.payload, undefined, 2);
+  var payload = github.context.payload;
   if (payload === {}) {
     payload = sample_payload;
   }
-  console.log(JSON.stringify(payload));
   core.info("Creating payload ...");
   const slackMessagePayload = getSlackPayload({
     repoName: _.get(payload, "repository.repoName", ""),
