@@ -3,6 +3,11 @@ description: "A GitHub action to ping the event status to Slack"
 runs:
   using: node12
   main: dist/index.js
+inputs:
+  type:
+    description: "Type of event - push or merge"
+    default: "push"
+    required: false
 branding:
   color: blue
   icon: hash
