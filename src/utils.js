@@ -7,10 +7,8 @@ const filterData = (pokemonData) => {
   };
 };
 
-const getTitle = (key, data, filters) => {
-  const { offset } = filters;
-  const index = key % (offset > 0 ? offset : 1);
-  return data[index - 1]?.name || "Pokemon";
+const getTitle = (key, data) => {
+  return data[key]?.name || "Pokemon";
 };
 
 export { filterData, getTitle };

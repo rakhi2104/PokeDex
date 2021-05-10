@@ -14,6 +14,7 @@ function App() {
     showModal: false,
     modalId: null,
     loading: true,
+    pId: null,
     error: false,
   });
 
@@ -55,6 +56,7 @@ function App() {
                           ...appState,
                           modalId: currIdx,
                           showModal: true,
+                          pId: idx,
                         })
                       }
                       hoverable
@@ -113,7 +115,7 @@ function App() {
           centered
           closable={true}
           footer={null}
-          title={getTitle(appState?.modalId, state?.results, filters)}
+          title={getTitle(appState?.pId, state?.results)}
         >
           <ModalContent idx={appState?.modalId} />
         </Modal>
